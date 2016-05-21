@@ -64,15 +64,124 @@ bio.display=function(){
 
 	}
 }
-// var schools={
-// 		"schools": [{
-// 			"name":  "Marygiri Senior Secondary School",
-// 			"location": "Kannur",
-// 			"degree": "value", 
-// 			"majors": ["Physics","Chemistry","Mathematics"],
-// 		    "date": "2009-2011",
-// 		    "url": "value",   
-// 		}
-// 		]  
-// }
+var education={
+		"schools": [{
+			"name":  "Marygiri Senior Secondary School",
+			"location": "Kannur",
+			"degree": "value", 
+			"majors": ["Physics ","Chemistry ","Mathematics "],
+		    "date": "2009-2011",
+		    "url": "value"   
+		   },
+		   {
+		   	"name" :"SCT College of Engineering",
+		   	"location" : "Trivandrum",
+		   	"degree": "B.Tech",
+		   	"majors": ["Computer Science"],
+		   	"date" : "2012-2016"
+		 //  	"url"  : "value"
+		   }
+		],  
+		"onlineCourses" :[{
+			   "title"	: "Udacity Frontend Nanodegree",
+			   "school":"Udacity",
+			   "date":"2016",
+			   "url":"www.udacity.com" 
+		 }
+		]
+}
+
+ education.display=function(){
+	$('#education').append(HTMLschoolStart);
+	for(school in education.schools){
+		var fsname=HTMLschoolName.replace("%data%",education.schools[school].name);
+		$('#education').append(fsname);
+
+		var flocation=HTMLschoolLocation.replace("%data%",education.schools[school].location);
+		$('#education').append(flocation);
+        var majorlist="";
+		for(major in education.schools[school].majors){
+			majorlist=majorlist+education.schools[school].majors[major];
+		}
+		//console.log(majorlist);
+
+		var fmajor=HTMLschoolMajor.replace("%data%",majorlist);
+		$("#education").append(fmajor);
+
+		var fdate=HTMLschoolDates.replace("%data%",education.schools[school].date);
+		$('#education').append(fdate);
+	}
+}
+
+var work={
+     "jobs": [{
+     		"employer":  "Hilton Hotel",
+     		"title"	  :  "waiter",
+     		"location":  "Kannur",
+     		"dates"   :  "2011",
+     		"description" : "Worked as a waiter for some pocket money.Blah blah blah blah blah blah blahb blahb bablhababalbabalba abalblabjalblabljalblabljaljblajb"
+       }
+     ] 
+}
+
+ work.display=function(){
+ 		$('#workExperience').append(HTMLworkStart);
+  		for(job in work.jobs){
+		 		var femployer=HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
+		 		$('#workExperience').append(femployer);
+
+		 		var ftitle=HTMLworkTitle.replace("%data%",work.jobs[job].title);
+		 		$('#workExperience').append(ftitle);
+
+		 		var flocation=HTMLworkLocation.replace("%data%",work.jobs[job].location);
+		 		$('#workExperience').append(flocation);
+
+		 		var fdates=HTMLworkDates.replace("%data%",work.jobs[job].dates);
+		 		$('#workExperience').append(fdates);
+
+		 		var fdescription=HTMLworkDescription.replace("%data%",work.jobs[job].description);
+		 		$('#workExperience').append(fdescription);					
+		 }
+}
+
+var projects={
+	"projects":[
+		{
+			"title": "Portfolio",
+			"dates": "2016",
+			"description":"I build a portfolio for given mockup.Bootstrap framework was used.Grunt was used to automate tasks .Images were optimized by using responsive images grunt plugin.Media queries were used to add responsiveness" ,
+			"images"	 :["images/fry.jpg","images/fry.jpg"]
+		},
+		{
+			"title": "Resume",
+			"dates": "2016",
+			"description":"Resume was build and all contents for the resume was storeed in JSON format.Grunt is used to automate tasks ",  	
+			"images":["images/fry.jpg","images/fry.jpg"]	
+		}
+	]	
+}
+
+projects.display=function(){
+	$('#projects').append(HTMLprojectStart);
+	for (project in projects.projects){
+		var ftitle=HTMLprojectTitle.replace("%data%",projects.projects[project].title);
+		$('#projects').append(ftitle);
+
+		var fdates=HTMLprojectDates.replace("%data%",projects.projects[project].dates);
+		$('#projects').append(fdates);
+
+		var fdescription=HTMLprojectDescription.replace("%data",projects.projects[project].description);
+		$('#projects').append(fdescription);
+	
+		 for(image in projects.projects[project].images){
+				var fimages=HTMLprojectImage.replace("%data%",projects.projects[project].images[image]);					
+				$('#projects').append(fimages);
+
+		}	
+	}	
+
+}
 bio.display();
+work.display();
+projects.display();
+education.display();
