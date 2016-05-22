@@ -110,7 +110,23 @@ var education={
 
 		var fdate=HTMLschoolDates.replace("%data%",education.schools[school].date);
 		$('#education').append(fdate);
-	}
+	}	
+	$('#education').append(HTMLonlineClasses);
+
+	education.onlineCourses.forEach(function(course){
+			var ftitle=HTMLonlineTitle.replace("%data%",course.title);
+			$('#education').append(ftitle);
+
+			var fschool=HTMLonlineSchool.replace("%data%",course.school);
+			$('#education').append(fschool);
+
+			var fdate=HTMLonlineDates.replace("%data%",course.date);
+			$('#education').append(fdate);
+
+			var furl=HTMLonlineURL.replace("%data%",course.url);
+			$('#education').append(furl);
+	});
+	
 }
 
 var work={
