@@ -21,6 +21,7 @@
   "homepage": "https://github.com/njanmelbin/frontend-nanodegree-resume#readme",
   "devDependencies": {
     "grunt": "^1.0.1",
-    "grunt-browser-sync": "^2.2.0"
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-responsive-images": "^0.1.7"
   }
 }

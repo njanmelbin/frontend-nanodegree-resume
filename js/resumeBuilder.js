@@ -20,7 +20,7 @@ var bio={
 		"mobile"	: "8281276178",
 		"email"		: "njanmelbin@gmail.com",
 		"github"	: "github.com/njanmelbin",
-		"location"	: "India"  
+		"location"	: "Kannur,Kerala,India"  
 		},
 	"welcomeMessage"	:   "Namaste",
 	"skills"			:	["awsomeness","simplicity"],
@@ -67,7 +67,7 @@ bio.display=function(){
 var education={
 		"schools": [{
 			"name":  "Marygiri Senior Secondary School",
-			"location": "Kannur",
+			"location": "Kannur,Kerala",
 			"degree": "value", 
 			"majors": ["Physics ","Chemistry ","Mathematics "],
 		    "date": "2009-2011",
@@ -75,7 +75,7 @@ var education={
 		   },
 		   {
 		   	"name" :"SCT College of Engineering",
-		   	"location" : "Trivandrum",
+		   	"location" : "Trivandrum,Kerala",
 		   	"degree": "B.Tech",
 		   	"majors": ["Computer Science"],
 		   	"date" : "2012-2016"
@@ -117,7 +117,7 @@ var work={
      "jobs": [{
      		"employer":  "Hilton Hotel",
      		"title"	  :  "waiter",
-     		"location":  "Kannur",
+     		"location":  "Kannur,Kerala",
      		"dates"   :  "2011",
      		"description" : "Worked as a waiter for some pocket money.Blah blah blah blah blah blah blahb blahb bablhababalbabalba abalblabjalblabljalblabljaljblajb"
        }
@@ -149,14 +149,14 @@ var projects={
 		{
 			"title": "Portfolio",
 			"dates": "2016",
-			"description":"I build a portfolio for given mockup.Bootstrap framework was used.Grunt was used to automate tasks .Images were optimized by using responsive images grunt plugin.Media queries were used to add responsiveness" ,
-			"images"	 :["images/fry.jpg","images/fry.jpg"]
+			"description":"I build a portfolio for given mockup.Bootstrap framework was used.Grunt was used to automate tasks .Images were optimized by using responsive images grunt plugin.Media queries were used to add responsiveness." ,
+			"images"	 :["images/img/portfolio-medium.jpg","images/img/portfolio-medium.jpg"]
 		},
 		{
 			"title": "Resume",
 			"dates": "2016",
-			"description":"Resume was build and all contents for the resume was storeed in JSON format.Grunt is used to automate tasks ",  	
-			"images":["images/fry.jpg","images/fry.jpg"]	
+			"description":"Resume was build and all contents for the resume was storeed in JSON format.Grunt is used to automate tasks.", 	
+			"images":["images/img/resume-medium.jpg","images/img/resume-medium.jpg"]	
 		}
 	]	
 }
@@ -170,7 +170,7 @@ projects.display=function(){
 		var fdates=HTMLprojectDates.replace("%data%",projects.projects[project].dates);
 		$('#projects').append(fdates);
 
-		var fdescription=HTMLprojectDescription.replace("%data",projects.projects[project].description);
+		var fdescription=HTMLprojectDescription.replace("%data%",projects.projects[project].description);
 		$('#projects').append(fdescription);
 	
 		 for(image in projects.projects[project].images){
@@ -185,3 +185,5 @@ bio.display();
 work.display();
 projects.display();
 education.display();
+
+$('#mapDiv').append(googleMap);
