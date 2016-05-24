@@ -27,7 +27,7 @@ var bio={
 	"bioPic"			:	"images/fry.jpg" 
 }
 
-bio.display=function(){
+ bio.display=function(){
 	var fheadername=HTMLheaderName.replace("%data%",bio.name);
 	// console.log(fheadername);
 	// console.log(bio.name);
@@ -57,12 +57,12 @@ bio.display=function(){
 	var fwelcomemsg=HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
 	$('#header').append(fwelcomemsg);
 	$('#header').append(HTMLskillsStart);
-	for (skill in bio.skills){
+	bio.skills.forEach(function(skill){
 			// console.log(bio.skills[skill]);
-			var fskill=HTMLskills.replace("%data%",bio.skills[skill]);
+			var fskill=HTMLskills.replace("%data%",skill);
 			$('#skills-h3').append(fskill);
 
-	}
+	});
 }
 var education={
 		"schools": [{
@@ -71,15 +71,15 @@ var education={
 			"degree": "value", 
 			"majors": ["Physics ","Chemistry ","Mathematics "],
 		    "date": "2009-2011",
-		    "url": "value"   
+		    "url": "www.marygiri.com"   
 		   },
 		   {
 		   	"name" :"SCT College of Engineering",
 		   	"location" : "Trivandrum,Kerala",
 		   	"degree": "B.Tech",
 		   	"majors": ["Computer Science"],
-		   	"date" : "2012-2016"
-		 //  	"url"  : "value"
+		   	"date" : "2012-2016",
+		   	"url"  : "www.sctce.ac.in"
 		   }
 		],  
 		"onlineCourses" :[{
@@ -93,24 +93,27 @@ var education={
 
  education.display=function(){
 	$('#education').append(HTMLschoolStart);
-	for(school in education.schools){
-		var fsname=HTMLschoolName.replace("%data%",education.schools[school].name);
+    education.schools.forEach(function(school){
+		var fsname=HTMLschoolName.replace("%data%",school.name);
 		$('#education').append(fsname);
 
-		var flocation=HTMLschoolLocation.replace("%data%",education.schools[school].location);
+		var flocation=HTMLschoolLocation.replace("%data%",school.location);
 		$('#education').append(flocation);
         var majorlist="";
-		for(major in education.schools[school].majors){
-			majorlist=majorlist+education.schools[school].majors[major];
-		}
+	    school.majors.forEach(function(major){
+			majorlist=majorlist+major;
+		});
 		//console.log(majorlist);
 
 		var fmajor=HTMLschoolMajor.replace("%data%",majorlist);
 		$("#education").append(fmajor);
 
-		var fdate=HTMLschoolDates.replace("%data%",education.schools[school].date);
+		var fdate=HTMLschoolDates.replace("%data%",school.date);
 		$('#education').append(fdate);
-	}	
+
+		var furl=HTMLschoolURL.replace("%data%",school.url);
+		$('#education').append(furl);
+	});	
 	$('#education').append(HTMLonlineClasses);
 
 	education.onlineCourses.forEach(function(course){
@@ -133,7 +136,7 @@ var work={
      "jobs": [{
      		"employer":  "Hilton Hotel",
      		"title"	  :  "waiter",
-     		"location":  "Kannur,Kerala",
+     		"location":  "KannurKerala",
      		"dates"   :  "2011",
      		"description" : "Worked as a waiter for some pocket money.Blah blah blah blah blah blah blahb blahb bablhababalbabalba abalblabjalblabljalblabljaljblajb"
        }
@@ -142,22 +145,22 @@ var work={
 
  work.display=function(){
  		$('#workExperience').append(HTMLworkStart);
-  		for(job in work.jobs){
-		 		var femployer=HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
+  		work.jobs.forEach(function(job){
+		 		var femployer=HTMLworkEmployer.replace("%data%",job.employer);
 		 		$('#workExperience').append(femployer);
 
-		 		var ftitle=HTMLworkTitle.replace("%data%",work.jobs[job].title);
+		 		var ftitle=HTMLworkTitle.replace("%data%",job.title);
 		 		$('#workExperience').append(ftitle);
 
-		 		var flocation=HTMLworkLocation.replace("%data%",work.jobs[job].location);
+		 		var flocation=HTMLworkLocation.replace("%data%",job.location);
 		 		$('#workExperience').append(flocation);
 
-		 		var fdates=HTMLworkDates.replace("%data%",work.jobs[job].dates);
+		 		var fdates=HTMLworkDates.replace("%data%",job.dates);
 		 		$('#workExperience').append(fdates);
 
-		 		var fdescription=HTMLworkDescription.replace("%data%",work.jobs[job].description);
+		 		var fdescription=HTMLworkDescription.replace("%data%",job.description);
 		 		$('#workExperience').append(fdescription);					
-		 }
+		});
 }
 
 var projects={
@@ -179,27 +182,44 @@ var projects={
 
 projects.display=function(){
 	$('#projects').append(HTMLprojectStart);
-	for (project in projects.projects){
-		var ftitle=HTMLprojectTitle.replace("%data%",projects.projects[project].title);
+	projects.projects.forEach(function(project){
+		var ftitle=HTMLprojectTitle.replace("%data%",project.title);
 		$('#projects').append(ftitle);
 
-		var fdates=HTMLprojectDates.replace("%data%",projects.projects[project].dates);
+		var fdates=HTMLprojectDates.replace("%data%",project.dates);
 		$('#projects').append(fdates);
 
-		var fdescription=HTMLprojectDescription.replace("%data%",projects.projects[project].description);
+		var fdescription=HTMLprojectDescription.replace("%data%",project.description);
 		$('#projects').append(fdescription);
 	
-		 for(image in projects.projects[project].images){
-				var fimages=HTMLprojectImage.replace("%data%",projects.projects[project].images[image]);					
+		 	 project.images.forEach(function(image){
+				var fimages=HTMLprojectImage.replace("%data%",image);					
 				$('#projects').append(fimages);
 
-		}	
-	}	
+			 });	
+	});	
 
 }
+
+var display=function(){
+
+	var fmobile=HTMLmobile.replace("%data%",bio.contacts.mobile);
+	$('#footerContacts').append(fmobile);
+
+	var femail=HTMLemail.replace("%data%",bio.contacts.email);
+	// console.log(femail);
+	// console.log(bio.contacts.email);
+	$('#footerContacts').append(femail);
+
+	var fgithub=HTMLgithub.replace("%data%",bio.contacts.github);
+	$('#footerContacts').append(fgithub);
+
+	var flocation=HTMLlocation.replace("%data%",bio.contacts.location);
+	$('#footerContacts').append(flocation);
+};
 bio.display();
 work.display();
 projects.display();
 education.display();
-
+display();
 $('#mapDiv').append(googleMap);
