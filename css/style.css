@@ -11,8 +11,7 @@ h5,
 h6 {
   padding:0;
   margin:0;
-  font-family: "Roboto", sans-serif;
-}
+  font-family: "Abel", sans-serif;}
 
 .clear-fix {
   overflow: auto;
@@ -80,7 +79,7 @@ h5 {
 }
 
 p {
-  font-size: 14px;
+  font-size: 16px;
   color: #333;
   line-height: 21px;
 }
@@ -129,7 +128,7 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #EA6049;
 }
 
 .flex-box {

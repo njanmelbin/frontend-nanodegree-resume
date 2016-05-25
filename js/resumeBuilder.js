@@ -1,18 +1,3 @@
-/*
-This is empty on purpose! Your code to build the resume will go here.
- */
-  // var formattedName=HTMLheaderName.replace("%data%","Melbin Thomas");
-//  var formattedRole=HTMLheaderRole.replace("%data%","Frontend Developer");
-  // var femail=HTMLemail.replace("%data%","njanmelbin@gmail.com");
-  // var fmobile=HTMLmobile.replace("%data%","asdfasdf");
-  // var ftwitter=HTMLtwitter.replace("%data%","njanmelbin") 
-
-// $('#header').append(formattedName);
-// $('#header').append(formattedRole);
-// $('#topContacts').append(fmoblie);
-// $('#topContacts').prepend(ftwitter);
-// $('#topContacts').append(femail);
-
 var bio={
 	"name"	: "Melbin Thomas",
 	"role"  : "Frontend Developer",
@@ -24,26 +9,20 @@ var bio={
 		},
 	"welcomeMessage"	:   "Namaste",
 	"skills"			:	["awsomeness","simplicity"],
-	"bioPic"			:	"images/fry.jpg" 
-}
+	"biopic"			:	"images/fry.jpg" 
+};
 
- bio.display=function(){
+ bio.display = function() {
 	var fheadername=HTMLheaderName.replace("%data%",bio.name);
-	// console.log(fheadername);
-	// console.log(bio.name);
 	$('#header').append(fheadername);
 
 	var fheaderRole=HTMLheaderRole.replace("%data%",bio.role);
-	// console.log(fheadername);
-	// console.log(bio.role);
 	$('#header').append(fheaderRole);
 
 	var fmobile=HTMLmobile.replace("%data%",bio.contacts.mobile);
 	$('#topContacts').append(fmobile);
 
 	var femail=HTMLemail.replace("%data%",bio.contacts.email);
-	// console.log(femail);
-	// console.log(bio.contacts.email);
 	$('#topContacts').append(femail);
 
 	var fgithub=HTMLgithub.replace("%data%",bio.contacts.github);
@@ -52,25 +31,24 @@ var bio={
 	var flocation=HTMLlocation.replace("%data%",bio.contacts.location);
 	$('#topContacts').append(flocation);
 
-	var fimage=HTMLbioPic.replace("%data%",bio.bioPic);
+	var fimage=HTMLbioPic.replace("%data%",bio.biopic);
 	$('#header').append(fimage);
 	var fwelcomemsg=HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
 	$('#header').append(fwelcomemsg);
 	$('#header').append(HTMLskillsStart);
 	bio.skills.forEach(function(skill){
-			// console.log(bio.skills[skill]);
 			var fskill=HTMLskills.replace("%data%",skill);
 			$('#skills-h3').append(fskill);
 
 	});
-}
+};
 var education={
 		"schools": [{
 			"name":  "Marygiri Senior Secondary School",
 			"location": "Kannur,Kerala",
 			"degree": "value", 
 			"majors": ["Physics ","Chemistry ","Mathematics "],
-		    "date": "2009-2011",
+		    "dates": "2009-2011",
 		    "url": "www.marygiri.com"   
 		   },
 		   {
@@ -78,7 +56,7 @@ var education={
 		   	"location" : "Trivandrum,Kerala",
 		   	"degree": "B.Tech",
 		   	"majors": ["Computer Science"],
-		   	"date" : "2012-2016",
+		   	"dates" : "2012-2016",
 		   	"url"  : "www.sctce.ac.in"
 		   }
 		],  
@@ -89,48 +67,49 @@ var education={
 			   "url":"www.udacity.com" 
 		 }
 		]
-}
+};
+   $('#education').append(HTMLschoolStart);
+ education.display = function() {
+	  education.schools.forEach(function(school){
 
- education.display=function(){
-	$('#education').append(HTMLschoolStart);
-    education.schools.forEach(function(school){
 		var fsname=HTMLschoolName.replace("%data%",school.name);
-		$('#education').append(fsname);
+		$('.education-entry').append(fsname);
 
 		var flocation=HTMLschoolLocation.replace("%data%",school.location);
-		$('#education').append(flocation);
+		$('.education-entry').append(flocation);
+        
         var majorlist="";
 	    school.majors.forEach(function(major){
 			majorlist=majorlist+major;
 		});
-		//console.log(majorlist);
-
+        console.log("hai");
 		var fmajor=HTMLschoolMajor.replace("%data%",majorlist);
-		$("#education").append(fmajor);
+		$('.education-entry').append(fmajor);
 
-		var fdate=HTMLschoolDates.replace("%data%",school.date);
-		$('#education').append(fdate);
+		var fdate=HTMLschoolDates.replace("%data%",school.dates);
+		$('.education-entry').append(fdate);
 
 		var furl=HTMLschoolURL.replace("%data%",school.url);
-		$('#education').append(furl);
+		$('.education-entry').append(furl);
 	});	
 	$('#education').append(HTMLonlineClasses);
+    $('#education').append(HTMLschoolStart);
 
 	education.onlineCourses.forEach(function(course){
 			var ftitle=HTMLonlineTitle.replace("%data%",course.title);
-			$('#education').append(ftitle);
+			$('.education-entry').append(ftitle);
 
 			var fschool=HTMLonlineSchool.replace("%data%",course.school);
-			$('#education').append(fschool);
+			$('.education-entry').append(fschool);
 
 			var fdate=HTMLonlineDates.replace("%data%",course.date);
-			$('#education').append(fdate);
+			$('.education-entry').append(fdate);
 
 			var furl=HTMLonlineURL.replace("%data%",course.url);
-			$('#education').append(furl);
+			$('.education-entry').append(furl);
 	});
 	
-}
+};
 
 var work={
      "jobs": [{
@@ -141,27 +120,27 @@ var work={
      		"description" : "Worked as a waiter for some pocket money.Blah blah blah blah blah blah blahb blahb bablhababalbabalba abalblabjalblabljalblabljaljblajb"
        }
      ] 
-}
+};
 
- work.display=function(){
+ work.display = function() {
  		$('#workExperience').append(HTMLworkStart);
   		work.jobs.forEach(function(job){
 		 		var femployer=HTMLworkEmployer.replace("%data%",job.employer);
-		 		$('#workExperience').append(femployer);
+		 		$('.work-entry').append(femployer);
 
 		 		var ftitle=HTMLworkTitle.replace("%data%",job.title);
-		 		$('#workExperience').append(ftitle);
+		 		$('.work-entry').append(ftitle);
 
 		 		var flocation=HTMLworkLocation.replace("%data%",job.location);
-		 		$('#workExperience').append(flocation);
+		 		$('.work-entry').append(flocation);
 
 		 		var fdates=HTMLworkDates.replace("%data%",job.dates);
-		 		$('#workExperience').append(fdates);
+		 		$('.work-entry').append(fdates);
 
 		 		var fdescription=HTMLworkDescription.replace("%data%",job.description);
-		 		$('#workExperience').append(fdescription);					
+		 		$('.work-entry').append(fdescription);					
 		});
-}
+};
 
 var projects={
 	"projects":[
@@ -178,28 +157,28 @@ var projects={
 			"images":["images/img/resume-medium.jpg","images/img/resume-medium.jpg"]	
 		}
 	]	
-}
+};
 
-projects.display=function(){
+projects.display = function() {
 	$('#projects').append(HTMLprojectStart);
 	projects.projects.forEach(function(project){
 		var ftitle=HTMLprojectTitle.replace("%data%",project.title);
-		$('#projects').append(ftitle);
+		$('.project-entry').append(ftitle);
 
 		var fdates=HTMLprojectDates.replace("%data%",project.dates);
-		$('#projects').append(fdates);
+		$('.project-entry').append(fdates);
 
 		var fdescription=HTMLprojectDescription.replace("%data%",project.description);
-		$('#projects').append(fdescription);
+		$('.project-entry').append(fdescription);
 	
 		 	 project.images.forEach(function(image){
 				var fimages=HTMLprojectImage.replace("%data%",image);					
-				$('#projects').append(fimages);
+				$('.project-entry').append(fimages);
 
 			 });	
 	});	
 
-}
+};
 
 var display=function(){
 
@@ -207,8 +186,6 @@ var display=function(){
 	$('#footerContacts').append(fmobile);
 
 	var femail=HTMLemail.replace("%data%",bio.contacts.email);
-	// console.log(femail);
-	// console.log(bio.contacts.email);
 	$('#footerContacts').append(femail);
 
 	var fgithub=HTMLgithub.replace("%data%",bio.contacts.github);
