@@ -116,18 +116,6 @@ education.display = function() {
         $('.education-entry:last').append(furl);
     });
 
-    var allElements = $('.education-entry');
-
- console.log('allElements: ', allElements);
-
- console.log('allElements length: ', allElements.length);
-
- var lastElement = $('.education-entry:last');
-
- console.log('lastElement: ', lastElement);
-
- console.log('lastElement length: ', lastElement.length);
-
 };
 
 var work = {
